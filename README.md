@@ -112,7 +112,7 @@ python main.py
 
 **Ejemplo:**
 - Entrada: `123456`
-- Salida: `904189`
+- Salida: `018932`
 
 ### Descifrado
 1. Ingresar el número cifrado de 6 dígitos
@@ -120,7 +120,7 @@ python main.py
 3. El número original se muestra en el campo de resultado
 
 **Ejemplo:**
-- Entrada: `904189`
+- Entrada: `018932`
 - Salida: `123456`
 
 ## 🔐 Algoritmo de Cifrado
@@ -131,27 +131,27 @@ python main.py
 # Ejemplo: 123456
 # Paso 1: Sumar 7 a cada dígito (mod 10)
 1+7=8, 2+7=9, 3+7=0, 4+7=1, 5+7=2, 6+7=3
-# Resultado: 890123
+# Resultado: [8, 9, 0, 1, 2, 3]
 
 # Paso 2: Intercambiar posiciones
-# 1º↔3º: 890123 → 090123
-# 2º↔4º: 090123 → 011923
-# 5º↔6º: 011923 → 011932
-# Resultado final: 904189
+# 1º↔3º: [8,9,0,1,2,3] → [0,9,8,1,2,3]
+# 2º↔4º: [0,9,8,1,2,3] → [0,1,8,9,2,3]
+# 5º↔6º: [0,1,8,9,2,3] → [0,1,8,9,3,2]
+# Resultado final: 018932
 ```
 
 ### Proceso de Descifrado
 
 ```python
-# Ejemplo: 904189
+# Ejemplo: 018932
 # Paso 1: Invertir intercambios
-# 5º↔6º: 904189 → 904198
-# 2º↔4º: 904198 → 901198
-# 1º↔3º: 901198 → 901198
-# Resultado: 890123
+# 1º↔3º: [0,1,8,9,3,2] → [8,1,0,9,3,2]
+# 2º↔4º: [8,1,0,9,3,2] → [8,9,0,1,3,2]
+# 5º↔6º: [8,9,0,1,3,2] → [8,9,0,1,2,3]
+# Resultado: [8, 9, 0, 1, 2, 3]
 
 # Paso 2: Restar 7 a cada dígito (mod 10)
-8-7=1, 9-7=2, 0-7=3, 1-7=4, 2-7=5, 3-7=6
+8-7=1, 9-7=2, 0-7=-7→3, 1-7=-6→4, 2-7=-5→5, 3-7=-4→6
 # Resultado final: 123456
 ```
 
@@ -266,12 +266,8 @@ Posibles mejoras para el proyecto:
 
 - [ ] Soporte para números de longitud variable
 - [ ] Algoritmos de cifrado adicionales (César, Vigenère, etc.)
-- [ ] Cifrado de texto completo
-- [ ] Exportar/importar números cifrados a archivo
-- [ ] Historial de operaciones
 - [x] Tests unitarios con pytest
 - [ ] Tests de interfaz con pytest-qt
-- [ ] CI/CD pipeline
 
 ## 📄 Licencia
 
