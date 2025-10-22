@@ -1,4 +1,4 @@
-quit# Aplicación de Cifrado y Descifrado
+## Aplicación de Cifrado y Descifrado
 
 Aplicación de escritorio desarrollada en Python con PyQt6 para cifrar y descifrar números de 6 dígitos usando un algoritmo personalizado.
 
