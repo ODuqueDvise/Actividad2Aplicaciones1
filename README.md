@@ -279,4 +279,4 @@ Orlando Duque Cantor - oduque94@unisalle.edu.co
 
 ---
 
-**Universidad de La Salle** | Aplicaciones I | 2025haz
+**Universidad de La Salle** | Aplicaciones I | 2025
