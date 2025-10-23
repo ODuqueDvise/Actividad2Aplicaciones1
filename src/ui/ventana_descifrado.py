@@ -18,6 +18,7 @@ class VentanaDescifrado(QtWidgets.QWidget):
         self.entrada = QtWidgets.QLineEdit()
         self.resultado_label = QtWidgets.QLabel("Número original:")
         self.resultado = QtWidgets.QLineEdit()
+        self.btn_copiar = QtWidgets.QPushButton("Copiar resultado")
         self.init_ui()
 
     def init_ui(self):
@@ -57,8 +58,14 @@ class VentanaDescifrado(QtWidgets.QWidget):
 
         # Campo de resultado (solo lectura)
         self.resultado.setReadOnly(True)
-        self.resultado.setStyleSheet("background-color: #f0f0f0;")
+        self.resultado.setStyleSheet("background-color: #ffffff; color: #000000; padding: 5px; border: 1px solid #cccccc;")
         layout.addWidget(self.resultado)
+
+        # Botón copiar resultado
+        self.btn_copiar.setMinimumHeight(35)
+        self.btn_copiar.clicked.connect(self.copiar_resultado)
+        self.btn_copiar.setEnabled(False)  # Deshabilitado hasta que haya resultado
+        layout.addWidget(self.btn_copiar)
 
         layout.addSpacing(20)
 
@@ -85,23 +92,16 @@ class VentanaDescifrado(QtWidgets.QWidget):
         # Descifrar número
         numero_original = self.cipher.descifrar(numero_str)
 
-        # Mostrar resultado
+        # Mostrar resultado en el campo
         self.resultado.setText(numero_original)
 
-        # Crear diálogo personalizado con botón de copiar
-        msg_box = QtWidgets.QMessageBox(self)
-        msg_box.setWindowTitle("Éxito")
-        msg_box.setText(f"Número cifrado: {numero_str}\nNúmero original: {numero_original}")
-        msg_box.setIcon(QtWidgets.QMessageBox.Icon.Information)
+        # Habilitar el botón de copiar
+        self.btn_copiar.setEnabled(True)
 
-        # Agregar botones
-        btn_copiar = msg_box.addButton("Copiar resultado", QtWidgets.QMessageBox.ButtonRole.ActionRole)
-        msg_box.addButton(QtWidgets.QMessageBox.StandardButton.Ok)
-
-        msg_box.exec()
-
-        # Si se presionó el botón copiar
-        if msg_box.clickedButton() == btn_copiar:
+    def copiar_resultado(self):
+        """Copia el resultado al portapapeles."""
+        texto_resultado = self.resultado.text()
+        if texto_resultado:
             clipboard = QtWidgets.QApplication.clipboard()
-            clipboard.setText(numero_original)
+            clipboard.setText(texto_resultado)
             QtWidgets.QMessageBox.information(self, "Copiado", "Resultado copiado al portapapeles")
