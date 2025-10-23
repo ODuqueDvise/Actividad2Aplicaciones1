@@ -34,7 +34,7 @@ class VentanaPrincipal(QtWidgets.QWidget):
         info_label.setFont(info_font)
         layout.addWidget(info_label)
 
-        # Datos del estudiante
+        # Datos autor
         datos_layout = QtWidgets.QVBoxLayout()
         datos_layout.addWidget(QtWidgets.QLabel("Nombre: Orlando Duque Cantor"))
         datos_layout.addWidget(QtWidgets.QLabel("Cédula: 80171794"))
